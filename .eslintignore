@@ -1,0 +1,7 @@
+node_modules/*
+public/*
+docs/*
+**/*.json
+coverage
+/src/api/endpoints
+jeans/*
