@@ -14,5 +14,7 @@ const COLOR = {
   primaryPink: '#FF1393',
   modal: '#000000df',
   darkGray: '#919191',
+  lightBlue: '#0192FA',
+  whiteBlue: '#E0EAFD',
 };
 export default COLOR;

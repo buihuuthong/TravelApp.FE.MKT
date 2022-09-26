@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SplashScreen from '@screens/splash/SplashScreen';
 import LoginScreen from '@screens/login/LoginScreen';
 import HomeScreen from '@screens/home/HomeScreen';
 import Loading from '@base-components/Loading'
@@ -12,12 +13,13 @@ const AppNavigation = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
+      <Stack.Navigator initialRouteName="SplashScreen">
         <Stack.Group
           screenOptions={{
             headerShown: false,
           }}
         >
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         </Stack.Group>

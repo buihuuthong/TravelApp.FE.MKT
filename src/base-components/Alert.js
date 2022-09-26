@@ -7,7 +7,7 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import Text from './Text';
 
 const Alert = (props) => {
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
   const { params } = useRoute();
   const { title, description, cancelText, confirmText, onCancel, onConfirm, theme } =
     params || props;

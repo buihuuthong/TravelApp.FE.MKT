@@ -12,6 +12,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.00,
+
+    elevation: 24,
   },
 });
 
@@ -21,28 +29,25 @@ export const PrimaryButton = ({
   disabled = false,
   style,
   border = false,
-  colors = [COLOR.lightPink, COLOR.pink],
+  bgColor,
+  color,
 }) => {
   return (
     <TouchableOpacity
-      style={[
-        {
-          opacity: disabled ? 0.5 : 1,
-        },
-      ]}
       disabled={disabled}
       onPress={onPress}
+      style={[style, styles.container, {
+        backgroundColor: bgColor,
+        borderRadius: border ? 8 : 15,
+        width: 330,
+        height: 55,
+        borderWidth: 1,
+        borderColor: COLOR.white
+      }]}
     >
-      <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={colors}
-        style={[styles.container, { borderRadius: border ? 8 : 15 }, style]}
-      >
-        <Text fontSize={FONT_SIZE.md} semibold color={COLOR.white}>
-          {text}
-        </Text>
-      </LinearGradient>
+      <Text fontSize={FONT_SIZE.md} semibold color={color ? color : COLOR.white }>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };

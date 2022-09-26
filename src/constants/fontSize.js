@@ -8,6 +8,7 @@ const FONT_SIZE = {
   h3: 22,
   h2: 24,
   h1: 28,
+  logo: 36
 };
 
 export default FONT_SIZE;
