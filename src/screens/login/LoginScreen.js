@@ -27,17 +27,24 @@ const LoginScreen = () => {
       >Ứng dụng cho phép bạn xem và đặt những tour {`\n`}
         du lịch trong nước một cách thuận lợi {`\n`} và nhanh chóng.
       </Text>
-      <PrimaryButton
-        text='Đăng nhập'
-        style={{ top: 10, shadowColor: '#0192FA'}}
-        bgColor={COLOR.lightBlue}
-      />
-      <PrimaryButton
-        text='Đăng kí'
-        color={COLOR.text}
-        style={{ top: 20, shadowColor: '#BDBDBD'}}
-        bgColor={COLOR.whiteBlue}
-      />
+      <View style={styles.buttonContainer}>
+        <PrimaryButton
+          text='Đăng nhập'
+          style={{ shadowColor: '#0192FA' }}
+          bgColor={COLOR.lightBlue}
+          onPress={() => navigate('SignInScreen')}
+        />
+        <PrimaryButton
+          text='Đăng kí'
+          color={COLOR.text}
+          style={{shadowColor: '#BDBDBD' }}
+          bgColor={COLOR.whiteBlue}
+          onPress={() => navigate('SignUpScreen')}
+        />
+        <TouchableOpacity onPress={() => navigate('MainTabScreen')}>
+          <Text fontSize={FONT_SIZE.default}>Bỏ qua và tiếp tục</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -49,5 +56,12 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  buttonContainer: {
+    flex: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10
   }
 })

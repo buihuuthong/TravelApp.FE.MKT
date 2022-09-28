@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import COLOR from '../constants/color';
+import ImageLocal from './ImageLocal';
 import Text from './Text';
 
 const styles = StyleSheet.create({
@@ -31,6 +32,7 @@ export const PrimaryButton = ({
   border = false,
   bgColor,
   color,
+  center
 }) => {
   return (
     <TouchableOpacity
@@ -42,7 +44,8 @@ export const PrimaryButton = ({
         width: 330,
         height: 55,
         borderWidth: 1,
-        borderColor: COLOR.white
+        borderColor: COLOR.white,
+        alignSelf: center ? 'center': null ,
       }]}
     >
       <Text fontSize={FONT_SIZE.md} semibold color={color ? color : COLOR.white }>
@@ -51,3 +54,14 @@ export const PrimaryButton = ({
     </TouchableOpacity>
   );
 };
+
+export const SocialButton = ({
+  image,
+  onPress
+}) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <ImageLocal image={image}/>
+    </TouchableOpacity>
+  )
+}
