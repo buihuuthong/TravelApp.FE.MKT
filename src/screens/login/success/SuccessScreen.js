@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
+import { useNavigation } from '@react-navigation/core';
 import Text from '@base-components/Text'
 import ImageLocal from '@base-components/ImageLocal'
 import IMAGE from '@constants/image'
@@ -7,6 +8,12 @@ import FONT_SIZE from '@constants/fontSize'
 import COLOR from '@constants/color'
 
 const SuccessScreen = () => {
+
+    const { navigate } = useNavigation();
+
+    useEffect(() => {
+        setTimeout(() => { navigate('MainTab') }, 500)
+    }, []);
 
     return (
         <View style={styles.container}>

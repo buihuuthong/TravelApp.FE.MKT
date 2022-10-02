@@ -26,7 +26,28 @@ const IMAGE = {
     source: require('../assets/success.png'),
     width: 190,
     height: 190,
-  }
+  },
+  home: {
+    source: require('../assets/home.png'),
+    width: 17,
+    height: 17,
+  },
+  bookmark: {
+    source: require('../assets/bookmark.png'),
+    width: 17,
+    height: 17,
+  },
+  message: {
+    source: require('../assets/message.png'),
+    width: 17,
+    height: 17,
+  },
+  account: {
+    source: require('../assets/account.png'),
+    width: 17,
+    height: 17,
+  },
+
 };
 
 export default IMAGE;

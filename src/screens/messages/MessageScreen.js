@@ -6,19 +6,19 @@ import COLOR from '@constants/color';
 import FONTSIZE from '@constants/fontSize';
 import { PrimaryButton } from '@base-components/Buttons';
 
-const HomeScreen = () => {
+const MessageScreen = () => {
   const { navigate, goBack } = useNavigation();
-  
+
   return (
     <View style={styles.container}>
       <Text fontSize={FONTSIZE.h2} color={COLOR.hardPink}>
-        HomeScreen!
+      MessageScreen!
       </Text>
     </View>
   );
 };
 
-export default HomeScreen;
+export default MessageScreen;
 
 const styles = StyleSheet.create({
   container: {
