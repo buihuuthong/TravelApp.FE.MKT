@@ -1400,6 +1400,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-15.4.0.tgz#182ac10af9417d2757adfdcd77bf26f48b5702b2"
   integrity sha512-8Vm/nJpFzjpBeIbueai+WR4m8WzzUvsOXG7oDyzvPPxAL1CkWAYQ3dKRk6KhcIaqGatvfR9Ue+k3XndRS6jSMA==
 
+"@react-native-firebase/messaging@^15.7.0":
+  version "15.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-15.7.0.tgz#fa81872ceb202125652678ebf310ae5e22107d2a"
+  integrity sha512-c2BLLbBm4kMjbkm1fJ465qZ2o24GHylLxeHSjU63SHIUVhnD5j7rWV/XvumNIEkSWtZmy9v+uGpmArLCAjZraw==
+
 "@react-native-masked-view/masked-view@^0.2.7":
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@react-native-masked-view/masked-view/-/masked-view-0.2.7.tgz#d19f1fc646df9440c23c834b4ff3f2b8fe15e175"

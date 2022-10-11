@@ -7,17 +7,24 @@ import IMAGE from '@constants/image'
 import FONT_SIZE from '@constants/fontSize'
 import COLOR from '@constants/color'
 
-const SuccessScreen = () => {
+const SuccessScreen = ({ route }) => {
 
     const { navigate } = useNavigation();
+    const { screenName } = route.params;
 
     useEffect(() => {
-        setTimeout(() => { navigate('MainTab') }, 500)
+        setTimeout(() => {
+            if (screenName === 'Đăng ký') {
+                navigate('SignInScreen')
+            } else if (screenName === 'Đăng nhập') {
+                navigate('MainTab')
+            }
+        }, 500)
     }, []);
 
     return (
         <View style={styles.container}>
-            <Text fontSize={FONT_SIZE.h3} textTransform="uppercase" semibold>Thành công</Text>
+            <Text fontSize={FONT_SIZE.h3} textTransform="uppercase" semibold>{screenName} Thành công</Text>
             <ImageLocal image={IMAGE.success} />
             <Text fontSize={FONT_SIZE.md} center color={COLOR.subText}>Tận hưởng và trải nghiệm những chuyến đi của {`\n`} bạn cùng My Tour!</Text>
         </View>

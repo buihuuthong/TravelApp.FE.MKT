@@ -59,7 +59,7 @@ const Alert = (props) => {
               }}
             >
               <Text
-                color={COLOR.primaryPink}
+                color={COLOR.blue}
                 semibold
                 fontSize={FONT_SIZE.md}
                 center

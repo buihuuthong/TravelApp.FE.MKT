@@ -5,12 +5,17 @@ import IMAGE from '@constants/image';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
+import { isLogin } from '@utils/method';
 
 const SplashScreen = ({ navigation }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('LoginScreen',)
+      if (isLogin()) {
+        navigation.navigate('MainTab')
+      } else {
+        navigation.navigate('LoginScreen')
+      }
      }, 500)
   }, [])
 

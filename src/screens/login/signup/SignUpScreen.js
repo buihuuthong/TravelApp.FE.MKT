@@ -1,62 +1,96 @@
-import React from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/core';
-import ImageLocal from '@base-components/ImageLocal';
-import IMAGE from '@constants/image';
+import Screen from '@base-components/Screen';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
-import { PrimaryButton, SocialButton } from '@base-components/Buttons';
+import { PrimaryButton } from '@base-components/Buttons';
 import { LoginHeader } from '@base-components/Headers';
 import { NormalInput } from '@base-components/Input';
+import login from '@services/login';
+import auth from '@react-native-firebase/auth';
 
 const SignUpScreen = () => {
-    const { navigate } = useNavigation();
+    const { navigate, goBack } = useNavigation();
+    const [fullName, setFullName] = useState();
+    const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
+
+    const onConfirm = async () => {
+        if(confirmPassword < 6){
+            navigate('Alert',{
+                description: 'Mật khẩu phải lớn hơn 6 kí tự!'
+            })
+        }
+        if(password !== confirmPassword){
+            navigate('Alert',{
+                description: 'Xác nhận mật khẩu chưa đúng!'
+            })
+        }
+        try {
+            navigate('Loading')
+            await login.signup( email, fullName, confirmPassword, phoneNumber, username);
+            auth().createUserWithEmailAndPassword(username + '@gmail.com', confirmPassword)
+            goBack();
+            navigate('SuccessScreen', {
+                screenName: 'Đăng ký'
+            })
+        } catch (error) {
+            goBack();
+            navigate('Alert',{
+                description: error.response.data.message
+            })
+        }
+    }
 
     return (
-        <View style={styles.container}>
+        <Screen noSafe>
             <LoginHeader
                 title="Đăng ký,"
                 description={"Tham gia cùng My Tour và \n bắt đầu những chuyến đi của bạn!"}
             />
-            <View style={styles.inputContainer}>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <NormalInput
                     placeholder="Họ và tên"
+                    value={fullName}
+                    onChangeText={setFullName}
                 />
                 <NormalInput
                     placeholder="Tài khoản"
+                    value={username}
+                    onChangeText={setUsername}
                 />
                 <NormalInput
                     placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <NormalInput
+                    placeholder="Số điện thoại"
+                    value={phoneNumber}
+                    onChangeText={setPhoneNumber}
                 />
                 <NormalInput
                     placeholder="Mật khẩu"
+                    value={password}
+                    onChangeText={setPassword}
                 />
                 <NormalInput
                     placeholder="Xác nhận mật khẩu"
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
                 />
-            </View>
             <PrimaryButton
                 text='Đăng ký'
                 style={{ shadowColor: '#0192FA', top: 10 }}
                 bgColor={COLOR.lightBlue}
-                onPress={{}}
+                onPress={onConfirm}
                 center
             />
-            <View style={styles.orContainer}>
-                <View
-                    style={styles.line}
-                />
-                <Text fontSize={FONT_SIZE.md}>Hoặc</Text>
-                <View
-                    style={styles.line}
-                />
-            </View>
-            <View style={styles.socialContainer}>
-                <SocialButton image={IMAGE.google} />
-                <SocialButton image={IMAGE.facebook} />
-                <SocialButton image={IMAGE.apple} />
-            </View>
             <View style={styles.signinNow}>
                 <Text fontSize={FONT_SIZE.md} semibold>Bạn đã có tài khoản? </Text>
                 <TouchableOpacity
@@ -69,7 +103,8 @@ const SignUpScreen = () => {
                     >Đăng nhập</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+            </ScrollView>
+        </Screen>
     )
 }
 

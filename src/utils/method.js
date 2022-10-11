@@ -1,4 +1,4 @@
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 // export const getPreviousScreen = (getState) => {
 //   try {
@@ -30,9 +30,9 @@
 //   );
 // };
 
-// export const isLogin = () => {
-//   return !!auth().currentUser;
-// };
+export const isLogin = () => {
+  return !!auth().currentUser;
+};
 
 // export const convertMetToKm = (met) => {
 //   let km = met / 1000;

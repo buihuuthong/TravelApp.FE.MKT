@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import api from '@services/api';
+import api from '@services/login';
 import { getTotal, isSameValue, _id } from '@utils/method';
 
 const initialState = {

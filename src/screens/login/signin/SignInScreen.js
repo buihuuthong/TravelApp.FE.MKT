@@ -1,6 +1,7 @@
-import React from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet, TouchableOpacity, Keyboard, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/core';
+import Screen from '@base-components/Screen';
 import ImageLocal from '@base-components/ImageLocal';
 import IMAGE from '@constants/image';
 import Text from '@base-components/Text';
@@ -9,27 +10,96 @@ import FONT_SIZE from '@constants/fontSize';
 import { PrimaryButton, SocialButton } from '@base-components/Buttons';
 import { LoginHeader } from '@base-components/Headers';
 import { NormalInput } from '@base-components/Input';
+import login from '@services/login';
+import auth from '@react-native-firebase/auth';
 
 const SignInScreen = () => {
-    const { navigate } = useNavigation();
+    const { navigate, goBack } = useNavigation();
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+
+    useEffect(() => {
+        auth()
+            .signOut()
+    }, []);
+
+
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            () => {
+                setKeyboardVisible(true); // or some other action
+            }
+        );
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            () => {
+                setKeyboardVisible(false); // or some other action
+            }
+        );
+
+        return () => {
+            keyboardDidHideListener.remove();
+            keyboardDidShowListener.remove();
+        };
+    }, []);
+
+    const onConfirm = async () => {
+        try {
+            navigate('Loading')
+            await login.signin(username, password);
+            auth()
+                .signInWithEmailAndPassword(username + '@gmail.com', password)
+                .then(() => {
+                    console.log('User account created & signed in!');
+                    navigate('SuccessScreen', {
+                        screenName: 'Đăng nhập'
+                    })
+                })
+                .catch(error => {
+                    goBack();
+                    navigate('Alert', {
+                        description: error.code === 'auth/user-not-found' 
+                        ? 'Tài khoản chưa được đăng ký' : error.code
+                    })
+                });
+        } catch (error) {
+            goBack();
+            navigate('Alert', {
+                description: error.response.data.message === 'must not be blank'
+                    ? 'Tài khoản và mật khẩu không được để trống' : error.response.data.code
+            })
+        }
+    }
+
+    const onNext = () => {
+        navigate('Alert',{
+            description: `Tính năng chưa phát triển\nVui lòng thử lại sau <3`
+        })
+    }
 
     return (
-        <View style={styles.container}>
+        <Screen noSafe>
             <LoginHeader
                 title="Xin chào,"
                 description="Hãy cùng bắt đầu hành trình của bạn nào!"
             />
             <View style={styles.inputContainer}>
                 <NormalInput
-                    placeholder="Email, số điện thoại hoặc tài khoản"
+                    placeholder="Tài khoản"
+                    value={username}
+                    onChangeText={setUsername}
                 />
                 <NormalInput
                     placeholder="Mật khẩu"
+                    value={password}
+                    onChangeText={setPassword}
                 />
             </View>
             <TouchableOpacity
                 style={{ alignItems: 'flex-end', padding: 10 }}
-                onPress={{}}
+                onPress={onNext}
             >
                 <Text
                     fontSize={FONT_SIZE.md}
@@ -39,7 +109,7 @@ const SignInScreen = () => {
                 text='Đăng nhập'
                 style={{ shadowColor: '#0192FA' }}
                 bgColor={COLOR.lightBlue}
-                onPress={() => navigate('SuccessScreen')}
+                onPress={onConfirm}
                 center
             />
             <View style={styles.orContainer}>
@@ -52,9 +122,9 @@ const SignInScreen = () => {
                 />
             </View>
             <View style={styles.socialContainer}>
-                <SocialButton image={IMAGE.google} />
-                <SocialButton image={IMAGE.facebook} />
-                <SocialButton image={IMAGE.apple} />
+                <SocialButton image={IMAGE.google} onPress={onNext}/>
+                <SocialButton image={IMAGE.facebook} onPress={onNext}/>
+                <SocialButton image={IMAGE.apple} onPress={onNext}/>
             </View>
             <View style={styles.signinNow}>
                 <Text fontSize={FONT_SIZE.md} semibold>Bạn chưa có tài khoản? </Text>
@@ -68,18 +138,13 @@ const SignInScreen = () => {
                     >Đăng kí ngay</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </Screen>
     )
 }
 
 export default SignInScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        justifyContent: 'center',
-    },
     inputContainer: {
         flexDirection: 'column',
         justifyContent: 'space-between',
