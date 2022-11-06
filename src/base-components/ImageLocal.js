@@ -5,6 +5,7 @@ import FastImage from 'react-native-fast-image';
 export const SquareImage = ({ style, size = 120, image }) => {
   return (
     <FastImage
+      resizeMode="stretch"
       style={[styles.image, { width: size, height: size }, style]}
       source={image.source}
     />
@@ -49,6 +50,5 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 8,
-    marginRight: 10,
   },
 });

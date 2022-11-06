@@ -2,9 +2,9 @@ import Text from '@base-components/Text'
 import FONT_SIZE from '@constants/fontSize'
 import { ScrollView, StyleSheet, View } from 'react-native'
 
-const ListMenu = ({ title, children }) => {
+const ListMenu = ({ title, children, style }) => {
     return(
-        <View style={styles.container}>
+        <View style={style}>
             { title ? <Text fontSize={FONT_SIZE.lg} semibold>{title}</Text> : null }
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {children}
@@ -14,9 +14,3 @@ const ListMenu = ({ title, children }) => {
 }
 
 export default ListMenu
-
-const styles = StyleSheet.create({
-    container: {
-
-    },
-})

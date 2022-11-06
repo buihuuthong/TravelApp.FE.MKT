@@ -4,6 +4,7 @@ import ListMenu from '@base-components/ListMenu'
 import Text from '@base-components/Text'
 import COLOR from '@constants/color'
 import FONT_SIZE from '@constants/fontSize'
+import globalStyles from '@constants/globalStyles'
 import { useState } from 'react'
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native'
 import NumSelect from './NumSelect'
@@ -14,9 +15,13 @@ const Detail = () => {
     const [adults, setAdults] = useState();
     const [child, setChild] = useState();
 
+    const onBook = () => {
+        console.log(adults, child);
+    }
+
     return (
         <View style={styles.container}>
-            <ListMenu>
+            <ListMenu style={styles.listMenu}>
                 <Item title="Tổng quan" isActive />
                 <Item title="Sự kiện" />
                 <Item title="Đánh giá" />
@@ -36,11 +41,11 @@ const Detail = () => {
                     <TouchableOpacity onPress={() => setIsReadMore(true)}>
                         <Text fontSize={FONT_SIZE.md} color={COLOR.blue}>Đọc thêm</Text>
                     </TouchableOpacity>}
-                <View style={styles.time}>
+                <View style={[styles.time, globalStyles.sbFlexRow]}>
                     <Text fontSize={FONT_SIZE.md} semibold >Thời gian tham quan</Text>
                     <Text fontSize={FONT_SIZE.md} color={COLOR.blue} semibold >Thứ 2 - Thứ 7 • 08:15 - 16:30</Text>
                 </View>
-                <View style={styles.numselect}>
+                <View style={[styles.numselect, globalStyles.sbFlexRow]}>
                     <NumSelect
                         selectedValue={adults}
                         onValueChange={(itemValue, itemIndex) => setAdults(itemValue)}
@@ -51,7 +56,7 @@ const Detail = () => {
                         onValueChange={(itemValue, itemIndex) => setChild(itemValue)}
                     />
                 </View>
-                <View style={styles.price}>
+                <View style={[styles.price, globalStyles.sbFlexRow]}>
                     <Text fontSize={FONT_SIZE.h1} semibold>Tạm tính: </Text>
                     <Text fontSize={FONT_SIZE.h1} color={COLOR.blue} semibold price>1000000</Text>
                 </View>
@@ -66,6 +71,7 @@ const Detail = () => {
                 }}
                 bgColor={COLOR.lightBlue}
                 center
+                onPress={onBook}
             />
         </View>
     )
@@ -77,15 +83,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        padding: 10,
-        top: -30
+        paddingHorizontal: 10,
+    },
+    listMenu: {
+        top: -14,
+        alignItems: 'center',
     },
     time: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         paddingVertical: 10
     },
     numselect: {
@@ -93,14 +97,8 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 24,
         borderRadius: 12,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
     },
     price: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         paddingVertical: 10,
         marginBottom: 100
     },

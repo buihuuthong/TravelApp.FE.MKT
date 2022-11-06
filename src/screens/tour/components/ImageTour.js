@@ -17,7 +17,7 @@ const ImageTour = () => {
                 <TouchableOpacity onPress={() => goBack()}>
                     <ImageLocal image={IMAGE.goback} />
                 </TouchableOpacity>
-                <View style={{ top: -20 }}>
+                <View>
                     <Text fontSize={FONT_SIZE.h2} color={COLOR.white} semibold >Langbiang</Text>
                     <View style={styles.text}>
                         <View style={styles.textItem}>
@@ -30,7 +30,7 @@ const ImageTour = () => {
                                 <Text fontSize={FONT_SIZE.default} color={COLOR.yellow}>5</Text>
                             </View>
                         </View>
-                        <View style={[styles.textItem, { width: '20%'}]}>
+                        <View style={[styles.textItem, { width: '20%' }]}>
                             <TouchableOpacity>
                                 <ImageLocal image={IMAGE.share} />
                             </TouchableOpacity>
@@ -41,6 +41,12 @@ const ImageTour = () => {
                     </View>
                 </View>
             </View>
+            <View style={{
+                backgroundColor: 'white',
+                borderTopLeftRadius: 30,
+                borderTopRightRadius: 30,
+                height: 30
+            }} />
         </ImageBackground>
     )
 }

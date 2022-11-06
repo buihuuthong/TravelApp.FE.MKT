@@ -3,13 +3,16 @@ import { View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
 import Text from '@base-components/Text'
 import FONT_SIZE from '@constants/fontSize'
 import COLOR from '@constants/color'
+import globalStyles from '@constants/globalStyles'
 
 const Item = ({ title, onPress, isActive }) => {
 
     return (
         <TouchableOpacity
             onPress={onPress}
-            style={[isActive ? styles.containerA : styles.container]}
+            style={[styles.container, globalStyles.shadow, { 
+                backgroundColor: isActive ? COLOR.blue : '#fff' 
+            }]}
         >
             <Text
                 fontSize={FONT_SIZE.md}
@@ -25,35 +28,9 @@ export default Item
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
         paddingVertical: 8,
         paddingHorizontal: 24,
         borderRadius: 20,
-        margin: 5,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-
-        elevation: 4,
+        margin: 4
     },
-    containerA: {
-        backgroundColor: COLOR.blue,
-        paddingVertical: 8,
-        paddingHorizontal: 24,
-        borderRadius: 20,
-        margin: 5,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-
-        elevation: 4,
-    }
 })

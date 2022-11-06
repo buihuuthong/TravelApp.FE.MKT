@@ -26,7 +26,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text fontSize={FONTSIZE.h1} color={COLOR.text} semibold>My Travel</Text>
+      <Text fontSize={FONTSIZE.h1} color={COLOR.blue} semibold>My Travel</Text>
       <Text fontSize={FONTSIZE.lg} color={COLOR.subText} >
         Tận hưởng trọn vẹn chuyến du lịch của bạn.
       </Text>
