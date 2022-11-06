@@ -51,7 +51,7 @@ const MainTab = () => {
         <Tab.Screen
           options={{
             tabBarIcon: ({ color }) => <ImageLocal color={color} image={IMAGE.bookmark} />,
-            title: 'Đơn hàng',
+            title: 'Đã Lưu',
           }}
           name="BookmarkScreen"
           component={BookmarkScreen}

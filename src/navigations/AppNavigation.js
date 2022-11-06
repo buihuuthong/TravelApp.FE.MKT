@@ -7,6 +7,7 @@ import SignInScreen from '@screens/login/signin/SignInScreen';
 import SignUpScreen from '@screens/login/signup/SignUpScreen';
 import SuccessScreen from '@screens/login/success/SuccessScreen';
 import MainTab from './MainTab';
+import TourScreen from '@screens/tour/TourScreen';
 import Loading from '@base-components/Loading'
 import Alert from '@base-components/Alert';
 
@@ -22,12 +23,13 @@ const AppNavigation = () => {
             headerShown: false,
           }}
         >
-        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        {/* <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+        <Stack.Screen name="SuccessScreen" component={SuccessScreen} /> */}
         <Stack.Screen name="MainTab" component={MainTab} />
+        <Stack.Screen name="TourScreen" component={TourScreen} />
         </Stack.Group>
         <Stack.Group
           screenOptions={{

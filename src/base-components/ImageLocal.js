@@ -2,14 +2,13 @@ import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-export const SquareImage = ({ style, size = 120 }) => {
-  return
+export const SquareImage = ({ style, size = 120, image }) => {
+  return (
     <FastImage
       style={[styles.image, { width: size, height: size }, style]}
-      source={{
-        uri: uri ?? SAMPLE_URI,
-      }}
+      source={image.source}
     />
+  )
 };
 
 const ImageLocal = ({ image, style, onPress, color, children, width, height }) => {
@@ -47,8 +46,8 @@ export default ImageLocal;
 
 const styles = StyleSheet.create({
   image: {
-    width: 120,
-    height: 120,
+    width: 80,
+    height: 80,
     borderRadius: 8,
     marginRight: 10,
   },
