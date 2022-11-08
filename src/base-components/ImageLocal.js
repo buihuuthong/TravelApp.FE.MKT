@@ -2,10 +2,10 @@ import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-export const SquareImage = ({ style, size = 120, image }) => {
+export const SquareImage = ({ style, size = 120, image, resizeMode }) => {
   return (
     <FastImage
-      resizeMode="stretch"
+      resizeMode={resizeMode}
       style={[styles.image, { width: size, height: size }, style]}
       source={image.source}
     />

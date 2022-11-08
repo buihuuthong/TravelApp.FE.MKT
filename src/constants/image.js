@@ -57,6 +57,11 @@ const IMAGE = {
     width: 14,
     height: 14,
   },
+  arrowRight: {
+    source: require('../assets/arrow_right.png'),
+    width: 14,
+    height: 14,
+  },
   home: {
     source: require('../assets/home.png'),
     width: 17,
@@ -95,7 +100,31 @@ const IMAGE = {
   langbiang2: {
     source: require('../assets/langbiang2.jpg'),
   },
-
+  infor: {
+    source: require('../assets/infor.png'),
+    width: 50,
+    height: 50,
+  },
+  locat: {
+    source: require('../assets/locat.png'),
+    width: 50,
+    height: 50,
+  },
+  love2: {
+    source: require('../assets/love2.png'),
+    width: 50,
+    height: 50,
+  },
+  notify: {
+    source: require('../assets/notify.png'),
+    width: 50,
+    height: 50,
+  },
+  pay: {
+    source: require('../assets/pay.png'),
+    width: 50,
+    height: 50,
+  },
 };
 
 export default IMAGE;
