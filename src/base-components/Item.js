@@ -1,9 +1,8 @@
-import React from 'react'
-import { View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
 import Text from '@base-components/Text'
-import FONT_SIZE from '@constants/fontSize'
 import COLOR from '@constants/color'
+import FONT_SIZE from '@constants/fontSize'
 import globalStyles from '@constants/globalStyles'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
 const Item = ({ title, onPress, isActive }) => {
 

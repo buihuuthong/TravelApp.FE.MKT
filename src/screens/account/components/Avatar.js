@@ -1,16 +1,18 @@
-import { SquareImage } from '@base-components/ImageLocal';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
 import globalStyles from '@constants/globalStyles';
-import IMAGE from '@constants/image';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 const Avatar = () => {
     return (
         <View style={[styles.container, globalStyles.flexRow]}>
             <View style={styles.avatar}>
-                <SquareImage image={IMAGE.account} size={82} resizeMode="center"/>
+                <Image source={{
+                    uri: 'https://upload.wikimedia.org/wikipedia/commons/8/84/%C4%90%E1%BB%89nh_Langbiang.JPG'
+                }}
+                style={styles.image}
+                />
             </View>
             <View style={styles.text}>
                 <Text fontSize={FONT_SIZE.lg} color={COLOR.white} semibold>Bùi Hữu Thông</Text>
@@ -40,5 +42,11 @@ const styles = StyleSheet.create({
     },
     text: {
         left: 10
+    },
+    image: {
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+        resizeMode: 'stretch'
     }
 });

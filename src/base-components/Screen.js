@@ -4,18 +4,26 @@ import FONT_SIZE from '@constants/fontSize';
 import globalStyles from '@constants/globalStyles';
 import IMAGE from '@constants/image';
 import { useNavigation } from '@react-navigation/core';
-import React, { useEffect, useMemo } from 'react';
-import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, View } from 'react-native';
+import { useEffect, useMemo } from 'react';
+import { KeyboardAvoidingView, Pressable, StyleSheet, View } from 'react-native';
 import Animated, {
   Easing,
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
+  withTiming
 } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ImageLocal from './ImageLocal';
 import Text from './Text';
+
+export const NormalScreen = ({ children, style, header }) => {
+  return(
+    <View style={[styles.normalScreen, style]}>
+      {children}
+    </View>
+  )
+}
 
 export const ModalWapper = ({
   children,
@@ -130,4 +138,9 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
   },
+  normalScreen: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: COLOR.white,
+  }
 });

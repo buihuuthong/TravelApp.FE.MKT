@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { View, StyleSheet } from 'react-native'
+import ImageLocal from '@base-components/ImageLocal';
+import Text from '@base-components/Text';
+import COLOR from '@constants/color';
+import FONT_SIZE from '@constants/fontSize';
+import IMAGE from '@constants/image';
 import { useNavigation } from '@react-navigation/core';
-import Text from '@base-components/Text'
-import ImageLocal from '@base-components/ImageLocal'
-import IMAGE from '@constants/image'
-import FONT_SIZE from '@constants/fontSize'
-import COLOR from '@constants/color'
+import { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 const SuccessScreen = ({ route }) => {
 

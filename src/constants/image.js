@@ -1,11 +1,11 @@
 import COLOR from './color';
-import { deviceWidth } from './dimension';
+import { deviceHeight, deviceWidth } from './dimension';
 
 const IMAGE = {
   logo: {
     source: require('../assets/logo.png'),
-    width: 300,
-    height: 350,
+    width: 320,
+    height: 320,
   },
   google: {
     source: require('../assets/google.png'),
@@ -64,23 +64,23 @@ const IMAGE = {
   },
   home: {
     source: require('../assets/home.png'),
-    width: 17,
-    height: 17,
+    width: 20,
+    height: 20,
   },
   bookmark: {
     source: require('../assets/bookmark.png'),
-    width: 17,
-    height: 17,
+    width: 20,
+    height: 20,
   },
-  message: {
-    source: require('../assets/message.png'),
-    width: 17,
-    height: 17,
+  notification: {
+    source: require('../assets/notification.png'),
+    width: 20,
+    height: 20,
   },
   account: {
     source: require('../assets/account.png'),
-    width: 17,
-    height: 17,
+    width: 20,
+    height: 20,
   },
   star: {
     source: require('../assets/star.png'),
@@ -124,6 +124,11 @@ const IMAGE = {
     source: require('../assets/pay.png'),
     width: 50,
     height: 50,
+  },
+  development: {
+    source: require('../assets/development.png'),
+    width: 320,
+    height: 320,
   },
 };
 

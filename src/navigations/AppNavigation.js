@@ -10,6 +10,7 @@ import MainTab from './MainTab';
 import TourScreen from '@screens/tour/TourScreen';
 import Loading from '@base-components/Loading'
 import Alert from '@base-components/Alert';
+import { StatusBar } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,14 +21,16 @@ const AppNavigation = () => {
       <Stack.Navigator initialRouteName="SplashScreen">
         <Stack.Group
           screenOptions={{
-            headerShown: false,
+            header: () => {
+              return <StatusBar barStyle="dark-content" translucent backgroundColor="transparent"/>;
+            },
           }}
         >
-        {/* <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen name="SuccessScreen" component={SuccessScreen} /> */}
+        <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="TourScreen" component={TourScreen} />
         </Stack.Group>

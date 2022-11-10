@@ -45,6 +45,10 @@ const globalStyles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  sbFlexCol: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 });
 
 export default globalStyles;

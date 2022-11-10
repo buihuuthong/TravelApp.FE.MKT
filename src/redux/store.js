@@ -3,18 +3,20 @@ import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthSlice from './AuthSlice';
 import UserSlice from './UserSlice';
+import TourSlice from './TourSlice';
 import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 
 const combinedReducers = combineReducers({
   auth: AuthSlice,
   user: UserSlice,
+  tour: TourSlice,
 });
 
 const rootReducer = persistReducer(
   {
     key: 'rootReducerConfig',
     storage: AsyncStorage,
-    whitelist: ['auth', 'user'],
+    whitelist: ['auth', 'user', 'tour'],
     stateReconciler: hardSet,
   },
   combinedReducers,

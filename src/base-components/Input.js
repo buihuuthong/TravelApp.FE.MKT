@@ -1,21 +1,16 @@
-import React from 'react'
-import { View, StyleSheet, TextInput } from 'react-native'
-import { useNavigation } from '@react-navigation/core';
-import ImageLocal from '@base-components/ImageLocal';
-import IMAGE from '@constants/image';
-import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
+import { StyleSheet, TextInput } from 'react-native';
 
 export const NormalInput = ({ placeholder, value, onChangeText }) => {
     return (
-            <TextInput
-                placeholder={placeholder}
-                placeholderTextColor={COLOR.subText}
-                style={styles.normalInput}
-                value={value}
-                onChangeText={onChangeText}
-            />
+        <TextInput
+            placeholder={placeholder}
+            placeholderTextColor={COLOR.subText}
+            style={styles.normalInput}
+            value={value}
+            onChangeText={onChangeText}
+        />
     )
 }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Text as ReactText } from 'react-native';
 import COLOR from '../constants/color';
 import FONT_SIZE from '../constants/fontSize';

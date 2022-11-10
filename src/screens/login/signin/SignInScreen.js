@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, TouchableOpacity, Keyboard, ScrollView } from 'react-native'
-import { useNavigation } from '@react-navigation/core';
-import Screen from '@base-components/Screen';
-import ImageLocal from '@base-components/ImageLocal';
-import IMAGE from '@constants/image';
-import Text from '@base-components/Text';
-import COLOR from '@constants/color';
-import FONT_SIZE from '@constants/fontSize';
 import { PrimaryButton, SocialButton } from '@base-components/Buttons';
 import { LoginHeader } from '@base-components/Headers';
 import { NormalInput } from '@base-components/Input';
-import login from '@services/login';
+import Screen from '@base-components/Screen';
+import Text from '@base-components/Text';
+import COLOR from '@constants/color';
+import FONT_SIZE from '@constants/fontSize';
+import IMAGE from '@constants/image';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/core';
+import login from '@services/login';
+import { useEffect, useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const SignInScreen = () => {
     const { navigate, goBack } = useNavigation();
-    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
@@ -24,31 +23,12 @@ const SignInScreen = () => {
             .signOut()
     }, []);
 
-
-    useEffect(() => {
-        const keyboardDidShowListener = Keyboard.addListener(
-            'keyboardDidShow',
-            () => {
-                setKeyboardVisible(true); // or some other action
-            }
-        );
-        const keyboardDidHideListener = Keyboard.addListener(
-            'keyboardDidHide',
-            () => {
-                setKeyboardVisible(false); // or some other action
-            }
-        );
-
-        return () => {
-            keyboardDidHideListener.remove();
-            keyboardDidShowListener.remove();
-        };
-    }, []);
-
     const onConfirm = async () => {
         try {
             navigate('Loading')
-            await login.signin(username, password);
+            const userToken = await login.signin(password, username);
+            console.log(userToken?.accessToken);
+
             auth()
                 .signInWithEmailAndPassword(username + '@gmail.com', password)
                 .then(() => {
@@ -56,31 +36,41 @@ const SignInScreen = () => {
                     navigate('SuccessScreen', {
                         screenName: 'Đăng nhập'
                     })
+                    firestore()
+                        .collection('accessToken')
+                        .doc(auth()?.currentUser?.uid)
+                        .set({
+                            token: userToken?.accessToken
+                        })
+                        .then(() => {
+                            console.log('Token added!');
+                        });
                 })
                 .catch(error => {
                     goBack();
                     navigate('Alert', {
-                        description: error.code === 'auth/user-not-found' 
-                        ? 'Tài khoản chưa được đăng ký' : error.code
+                        description: error.code === 'auth/user-not-found'
+                            ? 'Tài khoản chưa được đăng ký' : error.code
                     })
                 });
         } catch (error) {
-            goBack();
-            navigate('Alert', {
-                description: error.response.data.message === 'must not be blank'
-                    ? 'Tài khoản và mật khẩu không được để trống' : error.response.data.code
-            })
+            console.log("error", error);
+            // goBack();
+            // navigate('Alert', {
+            //     description: error.response.data.message === 'must not be blank'
+            //         ? 'Tài khoản và mật khẩu không được để trống' : error.response.data.code
+            // })
         }
     }
 
     const onNext = () => {
-        navigate('Alert',{
+        navigate('Alert', {
             description: `Tính năng chưa phát triển\nVui lòng thử lại sau <3`
         })
     }
 
     return (
-        <Screen noSafe>
+        <Screen center>
             <LoginHeader
                 title="Xin chào,"
                 description="Hãy cùng bắt đầu hành trình của bạn nào!"
@@ -122,9 +112,9 @@ const SignInScreen = () => {
                 />
             </View>
             <View style={styles.socialContainer}>
-                <SocialButton image={IMAGE.google} onPress={onNext}/>
-                <SocialButton image={IMAGE.facebook} onPress={onNext}/>
-                <SocialButton image={IMAGE.apple} onPress={onNext}/>
+                <SocialButton image={IMAGE.google} onPress={onNext} />
+                <SocialButton image={IMAGE.facebook} onPress={onNext} />
+                <SocialButton image={IMAGE.apple} onPress={onNext} />
             </View>
             <View style={styles.signinNow}>
                 <Text fontSize={FONT_SIZE.md} semibold>Bạn chưa có tài khoản? </Text>

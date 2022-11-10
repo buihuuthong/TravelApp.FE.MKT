@@ -1,12 +1,11 @@
-import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import { PrimaryButton } from '@base-components/Buttons';
 import ImageLocal from '@base-components/ImageLocal';
-import IMAGE from '@constants/image';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
-import { PrimaryButton } from '@base-components/Buttons';
+import IMAGE from '@constants/image';
+import { useNavigation } from '@react-navigation/core';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const LoginScreen = () => {
   const { navigate } = useNavigation();
@@ -37,7 +36,7 @@ const LoginScreen = () => {
         <PrimaryButton
           text='Đăng kí'
           color={COLOR.text}
-          style={{shadowColor: '#BDBDBD' }}
+          style={{ shadowColor: '#BDBDBD' }}
           bgColor={COLOR.whiteBlue}
           onPress={() => navigate('SignUpScreen')}
         />
@@ -58,10 +57,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonContainer: {
-    flex: 2,
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10
+    padding: 10,
+    height: '28%'
   }
 })

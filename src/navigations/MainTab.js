@@ -1,13 +1,12 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '@screens/home/HomeScreen';
-import BookmarkScreen from '@screens/bookmark/BookmarkScreen';
-import MessageScreen from '@screens/messages/MessageScreen';
-import AccountScreen from '@screens/account/AccountScreen';
 import ImageLocal from '@base-components/ImageLocal';
-import IMAGE from '@constants/image';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
+import IMAGE from '@constants/image';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AccountScreen from '@screens/account/AccountScreen';
+import BookmarkScreen from '@screens/bookmark/BookmarkScreen';
+import HomeScreen from '@screens/home/HomeScreen';
+import NotificationScreen from '@screens/notification/NotificationScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -58,11 +57,11 @@ const MainTab = () => {
         />
         <Tab.Screen
           options={{
-            tabBarIcon: ({ color }) => <ImageLocal color={color} image={IMAGE.message} />,
+            tabBarIcon: ({ color }) => <ImageLocal color={color} image={IMAGE.notification} />,
             title: 'Thông báo',
           }}
-          name="MessageScreen"
-          component={MessageScreen}
+          name="NotificationScreen"
+          component={NotificationScreen}
         />
         <Tab.Screen
           options={{

@@ -1,11 +1,7 @@
-import ImageLocal from '@base-components/ImageLocal'
-import Modal from '@base-components/Modal'
 import Text from '@base-components/Text'
 import FONT_SIZE from '@constants/fontSize'
-import IMAGE from '@constants/image'
 import { Picker } from '@react-native-picker/picker'
-import { useState } from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 const NumSelect = ({ isChild, selectedValue, onValueChange }) => {
 

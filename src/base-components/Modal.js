@@ -1,4 +1,4 @@
-import { StyleSheet, View, Modal as ReactModal, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import { Modal as ReactModal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 
 const Modal = ({ children, visible, onRequestClose }) => {
 

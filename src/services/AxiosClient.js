@@ -1,5 +1,6 @@
 import axios from 'axios';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 const API_ENDPOINT = 'http://192.168.1.16:8080/api/';
 
 const AxiosClient = axios.create({
@@ -11,14 +12,14 @@ const AxiosClient = axios.create({
 AxiosClient.interceptors.request.use(
   async (config) => {
     const newConfig = config;
-    let token = null;
     try {
-      token = await auth()?.currentUser?.getIdToken();
-    } catch {}
-    if (token) {
-      newConfig.headers.Authorization = `Bearer ${token}`;
-    }
-
+      firestore()
+        .collection('accessToken')
+        .doc(auth()?.currentUser?.uid)
+        .onSnapshot(documentSnapshot => {
+          newConfig.headers.Authorization = `Bearer ${documentSnapshot?.data()?.token}`;
+        });
+    } catch{}
     return newConfig;
   },
   (error) => {

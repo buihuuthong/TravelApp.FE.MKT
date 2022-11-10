@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
-import { useNavigation } from '@react-navigation/core';
+import { PrimaryButton } from '@base-components/Buttons';
+import { LoginHeader } from '@base-components/Headers';
+import { NormalInput } from '@base-components/Input';
 import Screen from '@base-components/Screen';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
-import { PrimaryButton } from '@base-components/Buttons';
-import { LoginHeader } from '@base-components/Headers';
-import { NormalInput } from '@base-components/Input';
-import login from '@services/login';
 import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/core';
+import login from '@services/login';
+import { useState } from 'react';
+import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const SignUpScreen = () => {
     const { navigate, goBack } = useNavigation();
@@ -42,7 +42,7 @@ const SignUpScreen = () => {
         } catch (error) {
             goBack();
             navigate('Alert',{
-                description: error.response.data.message
+                description: error
             })
         }
     }

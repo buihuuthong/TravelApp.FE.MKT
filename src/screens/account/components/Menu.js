@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import ImageLocal from '@base-components/ImageLocal';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
-import { PrimaryButton } from '@base-components/Buttons';
-import auth from '@react-native-firebase/auth';
-import ImageLocal from '@base-components/ImageLocal';
-import IMAGE from '@constants/image';
-import globalStyles from '@constants/globalStyles';
 import FONT_SIZE from '@constants/fontSize';
+import globalStyles from '@constants/globalStyles';
+import IMAGE from '@constants/image';
+import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/core';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const Menu = () => {
   const { navigate, goBack } = useNavigation();
@@ -55,6 +53,11 @@ const Menu = () => {
             title="Liên kết tài khoản"
             icon={IMAGE.pay}
             onPress={{}}
+        />
+        <MenuItem
+            title="Đăng xuất"
+            icon={IMAGE.pay}
+            onPress={onConfirm}
         />
     </View>
   );

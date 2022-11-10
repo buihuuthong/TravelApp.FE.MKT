@@ -1,6 +1,6 @@
 import Text from '@base-components/Text'
 import FONT_SIZE from '@constants/fontSize'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
 const ListMenu = ({ title, children, style }) => {
     return(

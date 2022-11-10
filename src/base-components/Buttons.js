@@ -1,7 +1,5 @@
 import FONT_SIZE from '@constants/fontSize';
-import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import COLOR from '../constants/color';
 import ImageLocal from './ImageLocal';
 import Text from './Text';
@@ -19,7 +17,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.00,
-
     elevation: 24,
   },
 });

@@ -1,10 +1,7 @@
-import React from 'react'
-import { View, TextInput, StyleSheet } from 'react-native'
-import Text from './Text'
 import FONT_SIZE from '@constants/fontSize'
-import COLOR from '@constants/color'
-import ImageLocal from './ImageLocal'
 import IMAGE from '@constants/image'
+import { StyleSheet, TextInput, View } from 'react-native'
+import ImageLocal from './ImageLocal'
 
 export const HomeSearch = ({ value, onChangeText }) => {
 

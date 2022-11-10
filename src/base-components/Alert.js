@@ -2,8 +2,7 @@ import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
 import globalStyles from '@constants/globalStyles';
 import { useNavigation, useRoute } from '@react-navigation/core';
-import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Text from './Text';
 
 const Alert = (props) => {

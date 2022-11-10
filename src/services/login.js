@@ -7,14 +7,17 @@ const login = {
             "fullName": fullName,
             "password": confirmPassword,
             "phoneNumber": phoneNumber,
-            "username": username,
+            "roles": [
+              "user"
+            ],
+            "username": username
           }
         );
     },
-    signin: (username, password) => {
+    signin: (password, username) => {
         return AxiosClient.post('auth/signin',{
             "password": password,
-            "username": username,
+            "username": username
           }
         );
     },

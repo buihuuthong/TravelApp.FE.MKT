@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { View, StyleSheet } from 'react-native'
 import ImageLocal from '@base-components/ImageLocal';
-import IMAGE from '@constants/image';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
+import IMAGE from '@constants/image';
 import { isLogin } from '@utils/method';
+import { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 const SplashScreen = ({ navigation }) => {
 
@@ -39,6 +39,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    top: -100
   },
 });
