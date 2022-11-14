@@ -20,7 +20,7 @@ const Alert = (props) => {
               style={styles.marginTop}
               semibold
               center
-              fontSize={theme === 'pink' ? FONT_SIZE.h2 : FONT_SIZE.h4}
+              fontSize={theme === 'pink' ? FONT_SIZE.h2 : FONT_SIZE.lg}
             >
               {title}
             </Text>

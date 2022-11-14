@@ -3,20 +3,24 @@ import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
 import globalStyles from '@constants/globalStyles';
 import { Image, StyleSheet, View } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux'
+import { userInfoSelector, setUserInfo } from '@redux/UserSlice'
 
 const Avatar = () => {
+    const userInfo = useSelector(userInfoSelector)
+
     return (
         <View style={[styles.container, globalStyles.flexRow]}>
             <View style={styles.avatar}>
                 <Image source={{
-                    uri: 'https://upload.wikimedia.org/wikipedia/commons/8/84/%C4%90%E1%BB%89nh_Langbiang.JPG'
+                    uri: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
                 }}
                 style={styles.image}
                 />
             </View>
             <View style={styles.text}>
-                <Text fontSize={FONT_SIZE.lg} color={COLOR.white} semibold>Bùi Hữu Thông</Text>
-                <Text fontSize={FONT_SIZE.default} color={COLOR.white} >buihuuthong2806</Text>
+                <Text fontSize={FONT_SIZE.lg} color={COLOR.white} semibold>{userInfo?.fullName}</Text>
+                <Text fontSize={FONT_SIZE.default} color={COLOR.white} >{userInfo?.email}</Text>
             </View>
         </View>
     );

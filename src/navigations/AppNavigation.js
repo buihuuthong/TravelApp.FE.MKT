@@ -1,16 +1,18 @@
-import React from 'react';
+import Alert from '@base-components/Alert';
+import Loading from '@base-components/Loading';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SplashScreen from '@screens/splash/SplashScreen';
+import BookHistoryDetail from '@screens/bookHistory/BookHistoryDetail';
+import BookTourScreen from '@screens/bookTour/BookTourScreen';
 import LoginScreen from '@screens/login/LoginScreen';
 import SignInScreen from '@screens/login/signin/SignInScreen';
 import SignUpScreen from '@screens/login/signup/SignUpScreen';
 import SuccessScreen from '@screens/login/success/SuccessScreen';
-import MainTab from './MainTab';
+import SplashScreen from '@screens/splash/SplashScreen';
 import TourScreen from '@screens/tour/TourScreen';
-import Loading from '@base-components/Loading'
-import Alert from '@base-components/Alert';
+import UserInfo from '@screens/userInfo/UserInfoScreen';
 import { StatusBar } from 'react-native';
+import MainTab from './MainTab';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +35,9 @@ const AppNavigation = () => {
         <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="TourScreen" component={TourScreen} />
+        <Stack.Screen name="BookTourScreen" component={BookTourScreen} />
+        <Stack.Screen name="BookHistoryDetail" component={BookHistoryDetail} />
+        <Stack.Screen name="UserInfo" component={UserInfo} />
         </Stack.Group>
         <Stack.Group
           screenOptions={{

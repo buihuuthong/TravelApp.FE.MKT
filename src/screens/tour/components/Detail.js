@@ -5,22 +5,32 @@ import Text from '@base-components/Text'
 import COLOR from '@constants/color'
 import FONT_SIZE from '@constants/fontSize'
 import globalStyles from '@constants/globalStyles'
+import { useNavigation } from '@react-navigation/native'
 import { tourInfoSelector } from '@redux/TourSlice'
-import { useCallback, useState } from 'react'
+import { userInfoSelector } from '@redux/UserSlice'
+import { useCallback, useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { useSelector } from 'react-redux'
 import NumSelect from './NumSelect'
 
 const Detail = () => {
-
+    const { navigate } = useNavigation();
     const [ showMore, setShowMore ] = useState(false);
     const [isReadMore, setIsReadMore] = useState(false);
-    const [adults, setAdults] = useState();
-    const [child, setChild] = useState();
+    const [adults, setAdults] = useState(1);
+    const [child, setChild] = useState(1);
     const tour = useSelector(tourInfoSelector)
+    const user = useSelector(userInfoSelector)
+    const totalPrice = tour.basePrice + (child * 50000) + (adults * 100000);
 
     const onBook = () => {
-        console.log(adults, child);
+        navigate('BookTourScreen', {
+            user: user.id,
+            tour: tour.id,
+            adults: adults,
+            child: child,
+            totalPrice: totalPrice,
+        })
     }
 
     const onTextLayout = useCallback(e => {
@@ -68,7 +78,7 @@ const Detail = () => {
                 </View>
                 <View style={[styles.price, globalStyles.sbFlexRow]}>
                     <Text fontSize={FONT_SIZE.h1} semibold>Tạm tính: </Text>
-                    <Text fontSize={FONT_SIZE.h1} color={COLOR.blue} semibold price>{tour.basePrice}</Text>
+                    <Text fontSize={FONT_SIZE.h1} color={COLOR.blue} semibold price>{totalPrice}</Text>
                 </View>
             </ScrollView>
             <PrimaryButton

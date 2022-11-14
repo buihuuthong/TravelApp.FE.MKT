@@ -12,11 +12,14 @@ import { useNavigation } from '@react-navigation/core';
 import login from '@services/login';
 import { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from '@redux/UserSlice';
 
 const SignInScreen = () => {
     const { navigate, goBack } = useNavigation();
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         auth()
@@ -26,8 +29,8 @@ const SignInScreen = () => {
     const onConfirm = async () => {
         try {
             navigate('Loading')
-            const userToken = await login.signin(password, username);
-            console.log(userToken?.accessToken);
+            const user = await login.signin(password, username);
+            dispatch(setUserInfo(user))
 
             auth()
                 .signInWithEmailAndPassword(username + '@gmail.com', password)
@@ -40,7 +43,7 @@ const SignInScreen = () => {
                         .collection('accessToken')
                         .doc(auth()?.currentUser?.uid)
                         .set({
-                            token: userToken?.accessToken
+                            token: user?.accessToken
                         })
                         .then(() => {
                             console.log('Token added!');

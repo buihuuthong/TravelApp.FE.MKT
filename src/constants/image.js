@@ -32,6 +32,11 @@ const IMAGE = {
     width: 24,
     height: 24,
   },
+  goback2: {
+    source: require('../assets/back_black.png'),
+    width: 24,
+    height: 24,
+  },
   location: {
     source: require('../assets/location.png'),
     width: 14,
@@ -74,6 +79,11 @@ const IMAGE = {
   },
   notification: {
     source: require('../assets/notification.png'),
+    width: 20,
+    height: 20,
+  },
+  history: {
+    source: require('../assets/history.png'),
     width: 20,
     height: 20,
   },
@@ -129,6 +139,11 @@ const IMAGE = {
     source: require('../assets/development.png'),
     width: 320,
     height: 320,
+  },
+  tick: {
+    source: require('../assets/tick.png'),
+    width: 100,
+    height: 100,
   },
 };
 

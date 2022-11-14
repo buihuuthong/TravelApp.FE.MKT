@@ -32,7 +32,7 @@ const Menu = () => {
         <MenuItem
             title="Thông tin người dùng"
             icon={IMAGE.infor}
-            onPress={{}}
+            onPress={() => navigate('UserInfo')}
         />
         <MenuItem
             title="Địa chỉ"

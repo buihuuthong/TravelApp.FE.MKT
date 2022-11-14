@@ -4,6 +4,7 @@ import FONT_SIZE from '@constants/fontSize';
 import IMAGE from '@constants/image';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AccountScreen from '@screens/account/AccountScreen';
+import BookHistoryScreen from '@screens/bookHistory/BookHistoryScreen';
 import BookmarkScreen from '@screens/bookmark/BookmarkScreen';
 import HomeScreen from '@screens/home/HomeScreen';
 import NotificationScreen from '@screens/notification/NotificationScreen';
@@ -55,13 +56,21 @@ const MainTab = () => {
           name="BookmarkScreen"
           component={BookmarkScreen}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           options={{
             tabBarIcon: ({ color }) => <ImageLocal color={color} image={IMAGE.notification} />,
             title: 'Thông báo',
           }}
           name="NotificationScreen"
           component={NotificationScreen}
+        /> */}
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({ color }) => <ImageLocal color={color} image={IMAGE.history} />,
+            title: 'Lịch sử',
+          }}
+          name="BookHistoryScreen"
+          component={BookHistoryScreen}
         />
         <Tab.Screen
           options={{

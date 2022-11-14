@@ -29,7 +29,8 @@ export const PrimaryButton = ({
   border = false,
   bgColor,
   color,
-  center
+  center,
+  display
 }) => {
   return (
     <TouchableOpacity
@@ -43,6 +44,7 @@ export const PrimaryButton = ({
         borderWidth: 1,
         borderColor: COLOR.white,
         alignSelf: center ? 'center': null ,
+        display: display ? 'none' : null
       }]}
     >
       <Text fontSize={FONT_SIZE.md} semibold color={color ? color : COLOR.white }>

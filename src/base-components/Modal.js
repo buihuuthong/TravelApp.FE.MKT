@@ -1,10 +1,10 @@
-import { Modal as ReactModal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
+import { Modal as ReactModal, StatusBar, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 
 const Modal = ({ children, visible, onRequestClose }) => {
 
     return (
         <ReactModal
-            animationType="slide"
+            animationType="fade"
             transparent={true}
             visible={visible}
             onRequestClose={onRequestClose}
