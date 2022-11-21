@@ -92,12 +92,12 @@ const SignUpScreen = () => {
                 center
             />
             <View style={styles.signinNow}>
-                <Text fontSize={FONT_SIZE.md} semibold>Bạn đã có tài khoản? </Text>
+                <Text fontSize={FONT_SIZE.default} semibold>Bạn đã có tài khoản? </Text>
                 <TouchableOpacity
                     onPress={() => navigate('SignInScreen')}
                 >
                     <Text
-                        fontSize={FONT_SIZE.md}
+                        fontSize={FONT_SIZE.default}
                         color={COLOR.blue}
                         semibold
                     >Đăng nhập</Text>

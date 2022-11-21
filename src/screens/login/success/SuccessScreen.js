@@ -26,7 +26,7 @@ const SuccessScreen = ({ route }) => {
         <View style={styles.container}>
             <Text fontSize={FONT_SIZE.h3} textTransform="uppercase" semibold>{screenName} Thành công</Text>
             <ImageLocal image={IMAGE.success} />
-            <Text fontSize={FONT_SIZE.md} center color={COLOR.subText}>Tận hưởng và trải nghiệm những chuyến đi của {`\n`} bạn cùng My Tour!</Text>
+            <Text fontSize={FONT_SIZE.default} center color={COLOR.subText}>Tận hưởng và trải nghiệm những chuyến đi của {`\n`} bạn cùng My Tour!</Text>
         </View>
     )
 }

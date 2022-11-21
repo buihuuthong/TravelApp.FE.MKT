@@ -24,7 +24,7 @@ const NumSelect = ({ isChild, selectedValue, onValueChange }) => {
                     <Picker.Item label="10" value="10" />
                 </Picker>
             </View>
-            <Text fontSize={FONT_SIZE.md} semibold>{isChild ? ' Trẻ em' : ' Người lớn'}</Text>
+            <Text fontSize={FONT_SIZE.default} semibold>{isChild ? ' Trẻ em' : ' Người lớn'}</Text>
         </View>
     )
 }

@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     text: {
-        fontSize: FONT_SIZE.md,
+        fontSize: FONT_SIZE.default,
         paddingHorizontal: 12,
         width: '80%'
     }

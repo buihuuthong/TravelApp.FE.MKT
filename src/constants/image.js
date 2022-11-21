@@ -145,6 +145,11 @@ const IMAGE = {
     width: 100,
     height: 100,
   },
+  bookmarkActive: {
+    source: require('../assets/bookmark_active.png'),
+    width: 28,
+    height: 28,
+  },
 };
 
 export default IMAGE;

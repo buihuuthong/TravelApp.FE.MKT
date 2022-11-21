@@ -67,7 +67,7 @@ const MainTab = () => {
         <Tab.Screen
           options={{
             tabBarIcon: ({ color }) => <ImageLocal color={color} image={IMAGE.history} />,
-            title: 'Lịch sử',
+            title: 'Đã đặt',
           }}
           name="BookHistoryScreen"
           component={BookHistoryScreen}

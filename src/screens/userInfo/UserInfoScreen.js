@@ -1,5 +1,6 @@
 import { PrimaryButton } from '@base-components/Buttons'
 import { NormalHeader } from '@base-components/Headers'
+import { InfoInput } from '@base-components/Input'
 import { NormalScreen } from '@base-components/Screen'
 import Text from '@base-components/Text'
 import COLOR from '@constants/color'
@@ -9,7 +10,8 @@ import firestore from '@react-native-firebase/firestore'
 import { useNavigation } from '@react-navigation/native'
 import { setUserInfo, userInfoSelector } from '@redux/UserSlice'
 import axios from 'axios'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -46,46 +48,29 @@ const UserInfo = () => {
             });
     }
 
-
-    const InfoItem = ({ title, value, onChangeText, placeholder }) => {
-        return (
-            <View style={styles.info}>
-                <Text fontSize={FONT_SIZE.md} semibold>{title}</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder={placeholder}
-                    onChangeText={onChangeText}
-                    value={value}
-                    underlineColorAndroid="transparent"
-                    require={true}
-                />
-            </View>
-        )
-    }
-
     return (
         <NormalScreen>
             <NormalHeader
                 title="Thông tin người dùng"
                 onPress={() => goBack()}
             />
-            <InfoItem
+            <InfoInput
                 title="Họ và tên:"
                 placeholder="Nhập họ và tên"
                 value={fullName}
-                onChangeText={(text) => setFullName(text)}
+                onChangeText={(value) => setFullName(value)}
             />
-            <InfoItem
+            <InfoInput
                 title="Email:"
                 placeholder="Nhập địa chỉ email"
-                onChangeText={(value) => setEmail(value)}
                 value={email}
+                onChangeText={(value) => setEmail(value)}
             />
-            <InfoItem
+            <InfoInput
                 title="Số điện thoại:"
                 placeholder="Nhập số điện thoại"
-                onChangeText={(value) => setPhoneNumber(value)}
                 value={phoneNumber}
+                onChangeText={(value) => setPhoneNumber(value)}
             />
             <PrimaryButton
                 text='Cập nhật'
@@ -104,12 +89,4 @@ const UserInfo = () => {
 export default UserInfo
 
 const styles = StyleSheet.create({
-    info: {
-        paddingVertical: 12
-    },
-    input: {
-        backgroundColor: COLOR.gray,
-        paddingHorizontal: 12,
-        borderRadius: 10
-    }
 })

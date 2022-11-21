@@ -14,7 +14,7 @@ const Item = ({ title, onPress, isActive }) => {
             }]}
         >
             <Text
-                fontSize={FONT_SIZE.md}
+                fontSize={FONT_SIZE.default}
                 color={isActive ? COLOR.white : COLOR.subText}
             >
                 {title}

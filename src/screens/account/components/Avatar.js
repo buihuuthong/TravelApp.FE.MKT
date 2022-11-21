@@ -10,7 +10,7 @@ const Avatar = () => {
     const userInfo = useSelector(userInfoSelector)
 
     return (
-        <View style={[styles.container, globalStyles.flexRow]}>
+        <View style={[styles.container, globalStyles.flexRow, globalStyles.shadow]}>
             <View style={styles.avatar}>
                 <Image source={{
                     uri: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'

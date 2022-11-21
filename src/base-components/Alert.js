@@ -26,7 +26,7 @@ const Alert = (props) => {
             </Text>
           )}
           {description ? (
-            <Text style={styles.marginTop} center fontSize={FONT_SIZE.md}>
+            <Text style={styles.marginTop} center fontSize={FONT_SIZE.default}>
               {description}
             </Text>
           ) : null}
@@ -42,7 +42,7 @@ const Alert = (props) => {
             }}
             style={[globalStyles.flex1]}
           >
-            <Text color={COLOR.subText} fontSize={FONT_SIZE.md} center style={styles.cancel}>
+            <Text color={COLOR.subText} fontSize={FONT_SIZE.default} center style={styles.cancel}>
               {cancelText ?? 'Quay lại'}
             </Text>
           </TouchableOpacity>
@@ -60,7 +60,7 @@ const Alert = (props) => {
               <Text
                 color={COLOR.blue}
                 semibold
-                fontSize={FONT_SIZE.md}
+                fontSize={FONT_SIZE.default}
                 center
                 style={styles.cancel}
               >

@@ -47,7 +47,7 @@ export const PrimaryButton = ({
         display: display ? 'none' : null
       }]}
     >
-      <Text fontSize={FONT_SIZE.md} semibold color={color ? color : COLOR.white }>
+      <Text fontSize={FONT_SIZE.default} semibold color={color ? color : COLOR.white }>
         {text}
       </Text>
     </TouchableOpacity>

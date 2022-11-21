@@ -40,9 +40,9 @@ const LoginScreen = () => {
           bgColor={COLOR.whiteBlue}
           onPress={() => navigate('SignUpScreen')}
         />
-        <TouchableOpacity onPress={() => navigate('MainTabScreen')}>
+        {/* <TouchableOpacity onPress={() => navigate('MainTabScreen')}>
           <Text fontSize={FONT_SIZE.default}>Bỏ qua và tiếp tục</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     padding: 10,
-    height: '28%'
+    height: '24%'
   }
 })

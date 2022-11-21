@@ -3,21 +3,25 @@ import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONT_SIZE from '@constants/fontSize';
 import IMAGE from '@constants/image';
+import { useFocusEffect } from '@react-navigation/native';
 import { isLogin } from '@utils/method';
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 const SplashScreen = ({ navigation }) => {
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (isLogin()) {
-        navigation.navigate('MainTab')
-      } else {
-        navigation.navigate('LoginScreen')
-      }
-     }, 500)
-  }, [])
+
+  useFocusEffect(
+    useCallback(() => {
+      setTimeout(() => {
+        if (isLogin()) {
+          navigation.navigate('MainTab')
+        } else {
+          navigation.navigate('LoginScreen')
+        }
+      }, 500)
+    }, [])
+  );
 
   return (
     <View style={styles.container}>

@@ -48,6 +48,7 @@ const globalStyles = StyleSheet.create({
   sbFlexCol: {
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 

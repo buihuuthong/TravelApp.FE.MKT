@@ -31,7 +31,6 @@ const SignInScreen = () => {
             navigate('Loading')
             const user = await login.signin(password, username);
             dispatch(setUserInfo(user))
-
             auth()
                 .signInWithEmailAndPassword(username + '@gmail.com', password)
                 .then(() => {
@@ -50,6 +49,7 @@ const SignInScreen = () => {
                         });
                 })
                 .catch(error => {
+                    console.log(error);
                     goBack();
                     navigate('Alert', {
                         description: error.code === 'auth/user-not-found'
@@ -95,7 +95,7 @@ const SignInScreen = () => {
                 onPress={onNext}
             >
                 <Text
-                    fontSize={FONT_SIZE.md}
+                    fontSize={FONT_SIZE.default}
                 >Bạn quên mật khẩu?</Text>
             </TouchableOpacity>
             <PrimaryButton
@@ -109,7 +109,7 @@ const SignInScreen = () => {
                 <View
                     style={styles.line}
                 />
-                <Text fontSize={FONT_SIZE.md}>Hoặc</Text>
+                <Text fontSize={FONT_SIZE.default}>Hoặc</Text>
                 <View
                     style={styles.line}
                 />
@@ -120,12 +120,12 @@ const SignInScreen = () => {
                 <SocialButton image={IMAGE.apple} onPress={onNext} />
             </View>
             <View style={styles.signinNow}>
-                <Text fontSize={FONT_SIZE.md} semibold>Bạn chưa có tài khoản? </Text>
+                <Text fontSize={FONT_SIZE.default} semibold>Bạn chưa có tài khoản? </Text>
                 <TouchableOpacity
                     onPress={() => navigate('SignUpScreen')}
                 >
                     <Text
-                        fontSize={FONT_SIZE.md}
+                        fontSize={FONT_SIZE.default}
                         color={COLOR.blue}
                         semibold
                     >Đăng kí ngay</Text>

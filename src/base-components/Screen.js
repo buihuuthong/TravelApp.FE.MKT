@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   normalScreen: {
     flex: 1,
     padding: 10,
-    top: 10,
+    paddingTop: 10,
     backgroundColor: COLOR.white,
   }
 });

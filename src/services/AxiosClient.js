@@ -2,6 +2,10 @@ import axios from 'axios';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 const API_ENDPOINT = 'http://192.168.1.16:8080/api/';
+//192.168.38.52
+//192.168.1.233 
+//192.168.0.232 iot
+//192.168.1.16 home
 
 const AxiosClient = axios.create({
   baseURL: API_ENDPOINT,

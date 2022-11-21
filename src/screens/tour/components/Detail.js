@@ -46,7 +46,7 @@ const Detail = () => {
             </ListMenu>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Text
-                    fontSize={FONT_SIZE.md}
+                    fontSize={FONT_SIZE.default}
                     numberOfLines={isReadMore ? null : 4}
                     onTextLayout={onTextLayout}
                 >
@@ -54,7 +54,7 @@ const Detail = () => {
                 </Text>
                 {showMore ?
                     <TouchableOpacity onPress={() => setIsReadMore(!isReadMore)}>
-                        <Text fontSize={FONT_SIZE.md} color={COLOR.blue}>
+                        <Text fontSize={FONT_SIZE.default} color={COLOR.blue}>
                             {isReadMore ? 'Ẩn bớt' : 'Đọc thêm'}
                         </Text>
                     </TouchableOpacity>
@@ -62,8 +62,8 @@ const Detail = () => {
                     null
                 }
                 <View style={[styles.time, globalStyles.sbFlexRow]}>
-                    <Text fontSize={FONT_SIZE.md} semibold >Thời gian tham quan</Text>
-                    <Text fontSize={FONT_SIZE.md} color={COLOR.blue} semibold >Thứ 2 - Thứ 7 • 08:15 - 16:30</Text>
+                    <Text fontSize={FONT_SIZE.default} semibold >Thời gian tham quan</Text>
+                    <Text fontSize={FONT_SIZE.default} color={COLOR.blue} semibold >Thứ 2 - Thứ 7 • 08:15 - 16:30</Text>
                 </View>
                 <View style={[styles.numselect, globalStyles.sbFlexRow]}>
                     <NumSelect

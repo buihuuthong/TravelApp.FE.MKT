@@ -1,12 +1,11 @@
 import { PrimaryButton } from '@base-components/Buttons'
 import { NormalHeader } from '@base-components/Headers'
-import ImageLocal from '@base-components/ImageLocal'
-import Modal from '@base-components/Modal'
+import { ModalSuccess } from '@base-components/Modal'
+import { NormalScreen } from '@base-components/Screen'
 import Text from '@base-components/Text'
 import COLOR from '@constants/color'
 import FONT_SIZE from '@constants/fontSize'
 import globalStyles from '@constants/globalStyles'
-import IMAGE from '@constants/image'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import { useNavigation } from '@react-navigation/native'
@@ -62,7 +61,10 @@ const BookHistoryDetail = ({ route }) => {
                     })
                     .then(function (res) {
                         setModalCanceled(true)
-                        setTimeout(() => { setModalCanceled(false) }, 1000)
+                        setTimeout(() => {
+                            setModalCanceled(false)
+                            navigate('BookHistoryCancel')
+                        }, 1000)
                     })
                     .catch(e => {
                         console.log(e.response);
@@ -71,40 +73,40 @@ const BookHistoryDetail = ({ route }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <NormalScreen style={styles.container}>
             <NormalHeader
                 title="Chi tiết đơn đặt"
                 onPress={() => goBack()}
             />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <BookItem title="Thông tin người dùng">
-                    <Text fontSize={FONT_SIZE.md}>
+                    <Text fontSize={FONT_SIZE.default}>
                         Họ và tên:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {data?.user?.fullName}
                         </Text>
                     </Text>
-                    <Text fontSize={FONT_SIZE.md}>
+                    <Text fontSize={FONT_SIZE.default}>
                         Email:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {data?.user?.email}
                         </Text>
                     </Text>
-                    <Text fontSize={FONT_SIZE.md}>
+                    <Text fontSize={FONT_SIZE.default}>
                         Số điện thoại:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {data?.user?.phoneNumber}
                         </Text>
                     </Text>
                 </BookItem>
                 <BookItem title="Thông tin tour">
-                    <Text fontSize={FONT_SIZE.md}>Tên tour:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                    <Text fontSize={FONT_SIZE.default}>Tên tour:{' '}
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {data?.tour?.tourName}
                         </Text>
                     </Text>
-                    <Text fontSize={FONT_SIZE.md}>Loại hình:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                    <Text fontSize={FONT_SIZE.default}>Loại hình:{' '}
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {
                                 data?.tour?.types[0]?.name == 'MOUNT' ? 'Núi' :
                                     data?.tour?.types[0]?.name == 'SEA' ? 'Biển' :
@@ -113,39 +115,41 @@ const BookHistoryDetail = ({ route }) => {
                             }
                         </Text>
                     </Text>
-                    <Text fontSize={FONT_SIZE.md}>Địa điểm:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                    <Text fontSize={FONT_SIZE.default}>Địa điểm:{' '}
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {data?.tour?.tourPlace}
                         </Text>
                     </Text>
                 </BookItem>
                 <BookItem title="Thông tin đặt tour">
-                    <Text fontSize={FONT_SIZE.md}>Trẻ em:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                    <Text fontSize={FONT_SIZE.default}>Trẻ em:{' '}
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {data?.child}
                         </Text>
                     </Text>
-                    <Text fontSize={FONT_SIZE.md}>Người lớn:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                    <Text fontSize={FONT_SIZE.default}>Người lớn:{' '}
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             {data?.adults}
                         </Text>
                     </Text>
-                    <Text fontSize={FONT_SIZE.md}>Thời gian:{' '}
-                        <Text fontSize={FONT_SIZE.md} semibold  >
+                    <Text fontSize={FONT_SIZE.default}>Thời gian:{' '}
+                        <Text fontSize={FONT_SIZE.default} semibold  >
                             Thứ 2 - Thứ 7 • 08:15 - 16:30
                         </Text>
                     </Text>
                 </BookItem>
-                <View style={[styles.bookItem, globalStyles.shadow]}>
-                    <Text fontSize={FONT_SIZE.lg} semibold >Lưu ý cho chúng tôi:</Text>
-                    <Text fontSize={FONT_SIZE.md} semibold  >
-                        {data?.note}
-                    </Text>
-                </View>
+                {!data?.note ? null : 
+                    <View style={[styles.bookItem, globalStyles.shadow]}>
+                        <Text fontSize={FONT_SIZE.lg} semibold >Lưu ý cho chúng tôi:</Text>
+                        <Text fontSize={FONT_SIZE.default} semibold  >
+                            {data?.note}
+                        </Text>
+                    </View>
+                }
                 <BookItem title="Thanh toán" style={{ marginBottom: 120 }}>
                     <View style={[styles.price, globalStyles.sbFlexRow]}>
-                        <Text fontSize={FONT_SIZE.md}>Hình thức thanh toán: </Text>
-                        <Text fontSize={FONT_SIZE.md} semibold>Thanh toán trực tiếp</Text>
+                        <Text fontSize={FONT_SIZE.default}>Hình thức thanh toán: </Text>
+                        <Text fontSize={FONT_SIZE.default} semibold>Thanh toán trực tiếp</Text>
                     </View>
                     <View style={[styles.price, globalStyles.sbFlexRow]}>
                         <Text fontSize={FONT_SIZE.h1} semibold>Tổng tiền: </Text>
@@ -167,41 +171,27 @@ const BookHistoryDetail = ({ route }) => {
                     onPress={() => navigate('Alert', {
                         title: 'Xác nhận hủy tour?',
                         cancelText: 'Hủy',
-                        onConfirm: () => onConfirm()
+                        onConfirm: onConfirm
                     })}
                 />}
-            <Modal
+            <ModalSuccess
                 visible={modalCanceled}
                 onRequestClose={() => {
                     setModalCanceled(!modalCanceled);
                 }}
-            >
-                <ImageLocal image={IMAGE.tick}
-                />
-                <View style={globalStyles.center}>
-                    <Text fontSize={FONT_SIZE.h3} semibold >Thành công</Text>
-                    <Text fontSize={FONT_SIZE.lg}>
-                        Cảm ơn bạn đã sử dụng dịch vụ.
-                    </Text>
-                    <Text fontSize={FONT_SIZE.md}> Vui lòng kiểm tra lại Gmail.</Text>
-                </View>
-            </Modal>
-        </View>
+            />
+        </NormalScreen>
     )
 }
 
 export default BookHistoryDetail;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     bookItem: {
         backgroundColor: COLOR.white,
         padding: 14,
-        marginVertical: 4,
         borderRadius: 14,
-        margin: 14
+        margin: 4
     },
     input: {
         backgroundColor: COLOR.lightGray

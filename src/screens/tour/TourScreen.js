@@ -31,7 +31,7 @@ const TourScreen = ({ route }) => {
                         console.log(e);
                     })
             });
-    }, []);
+    }, [tourId]);
 
     return (
         <View style={styles.container}>

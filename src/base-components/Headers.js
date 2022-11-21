@@ -8,20 +8,24 @@ import ImageLocal from './ImageLocal';
 
 const styles = StyleSheet.create({
     container: {
-        padding: 14,
-        top: 8
+        marginTop: 24,
+        marginBottom: 12,
     },
     item: {
-        width: '25%'
+        width: '15%'
     }
 })
 export const NormalHeader = ({ title, onPress }) => {
     return(
         <View style={[styles.container, globalStyles.sbFlexRow]}>
+            {onPress ?
             <TouchableOpacity style={styles.item} onPress={onPress}>
                 <ImageLocal image={IMAGE.goback2} />
-            </TouchableOpacity>
-            <Text fontSize={FONT_SIZE.h2} color={COLOR.blue} semibold>{title}</Text>
+            </TouchableOpacity> 
+            : 
+            <View style={styles.item}/>
+            }
+            <Text center fontSize={FONT_SIZE.h2} color={COLOR.blue} semibold>{title}</Text>
             <View style={styles.item}/>
         </View>
     )

@@ -19,9 +19,9 @@ const Menu = () => {
 
   const MenuItem = ({ onPress, icon, title }) => {
     return(
-        <TouchableOpacity style={[styles.menuItem, globalStyles.sbFlexRow]} onPress={onPress}>
+        <TouchableOpacity style={[styles.menuItem, globalStyles.sbFlexRow, globalStyles.shadow]} onPress={onPress}>
             <ImageLocal image={icon} />
-            <Text fontSize={FONT_SIZE.md} semibold >{title}</Text>
+            <Text fontSize={FONT_SIZE.default} semibold >{title}</Text>
             <ImageLocal image={IMAGE.arrowRight} />
         </TouchableOpacity>
     )
@@ -37,22 +37,18 @@ const Menu = () => {
         <MenuItem
             title="Địa chỉ"
             icon={IMAGE.locat}
-            onPress={{}}
         />
         <MenuItem
             title="Đã lưu"
             icon={IMAGE.love2}
-            onPress={{}}
         />
         <MenuItem
             title="Thông báo"
             icon={IMAGE.notify}
-            onPress={{}}
         />
         <MenuItem
             title="Liên kết tài khoản"
             icon={IMAGE.pay}
-            onPress={{}}
         />
         <MenuItem
             title="Đăng xuất"
