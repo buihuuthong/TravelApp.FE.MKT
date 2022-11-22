@@ -3,16 +3,11 @@ import { HomeSearch } from '@base-components/Search';
 import Text from '@base-components/Text';
 import COLOR from '@constants/color';
 import FONTSIZE from '@constants/fontSize';
-import { useEffect } from 'react';
-import { LogBox, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import Recommend from './components/Recommend';
 import Topic from './components/Topic';
 
 const HomeScreen = () => {
-
-  useEffect(() => {
-    LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
-  });
 
   return (
     <NormalScreen>

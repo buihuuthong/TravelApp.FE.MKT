@@ -41,14 +41,11 @@ const Menu = () => {
         <MenuItem
             title="Đã lưu"
             icon={IMAGE.love2}
+            onPress={() => navigate('BookmarkScreen')}
         />
         <MenuItem
             title="Thông báo"
             icon={IMAGE.notify}
-        />
-        <MenuItem
-            title="Liên kết tài khoản"
-            icon={IMAGE.pay}
         />
         <MenuItem
             title="Đăng xuất"

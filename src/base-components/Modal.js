@@ -44,6 +44,24 @@ export const ModalSuccess = ({ visible, onRequestClose }) => {
     )
 }
 
+export const ModalInfoSuccess = ({ visible, onRequestClose }) => {
+    return (
+        <Modal
+            visible={visible}
+            onRequestClose={onRequestClose}
+        >
+            <ImageLocal image={IMAGE.tick}
+            />
+            <View style={globalStyles.center}>
+                <Text fontSize={FONT_SIZE.h3} semibold >Thành công</Text>
+                <Text fontSize={FONT_SIZE.lg}>
+                    Thông tin của bạn đã được cập nhật.
+                </Text>
+            </View>
+        </Modal>
+    )
+}
+
 const styles = StyleSheet.create({
     centeredView: {
         flex: 1,

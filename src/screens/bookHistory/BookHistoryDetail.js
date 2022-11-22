@@ -171,7 +171,8 @@ const BookHistoryDetail = ({ route }) => {
                     onPress={() => navigate('Alert', {
                         title: 'Xác nhận hủy tour?',
                         cancelText: 'Hủy',
-                        onConfirm: onConfirm
+                        onConfirm: () => {onConfirm()},
+                        onCancel: () => {},
                     })}
                 />}
             <ModalSuccess

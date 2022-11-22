@@ -95,7 +95,11 @@ const BookmarkScreen = () => {
           style={[styles.detail, globalStyles.sbFlexCol]}
         >
           <TouchableOpacity
-            onPress={() => unSaveTour(item?.id)}
+            onPress={() => navigate('Alert', {
+              title: 'Bỏ lưu tour này?',
+              onConfirm: () => {unSaveTour(item?.id)},
+              onCancel: () => {},
+            })}
             style={{ alignSelf: 'flex-end' }}
           >
             <ImageLocal image={IMAGE.bookmarkActive} color={COLOR.blue} />

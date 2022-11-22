@@ -1,27 +1,26 @@
 import { PrimaryButton } from '@base-components/Buttons'
 import { NormalHeader } from '@base-components/Headers'
 import { InfoInput } from '@base-components/Input'
+import { ModalInfoSuccess } from '@base-components/Modal'
 import { NormalScreen } from '@base-components/Screen'
-import Text from '@base-components/Text'
 import COLOR from '@constants/color'
-import FONT_SIZE from '@constants/fontSize'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import { useNavigation } from '@react-navigation/native'
 import { setUserInfo, userInfoSelector } from '@redux/UserSlice'
 import axios from 'axios'
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import { StyleSheet, TextInput, View } from 'react-native'
+import { useState } from 'react'
+import { StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
 const UserInfo = () => {
-    const { goBack } = useNavigation()
+    const { goBack, navigate } = useNavigation()
     const dispatch = useDispatch()
     const userInfo = useSelector(userInfoSelector)
     const [fullName, setFullName] = useState(userInfo?.fullName);
     const [email, setEmail] = useState(userInfo?.email);
     const [phoneNumber, setPhoneNumber] = useState(userInfo?.phoneNumber);
+    const [modalSuccess, setModalSuccess] = useState(false);
 
     const onConfirm = () => {
         firestore()
@@ -39,8 +38,12 @@ const UserInfo = () => {
                         },
                     })
                     .then(function (res) {
-                        goBack()
                         dispatch(setUserInfo(res.data))
+                        setModalSuccess(true)
+                        setTimeout(() => {
+                            setModalSuccess(false)
+                            goBack()
+                        }, 1000)
                     })
                     .catch(e => {
                         console.log(e.response);
@@ -72,6 +75,9 @@ const UserInfo = () => {
                 value={phoneNumber}
                 onChangeText={(value) => setPhoneNumber(value)}
             />
+            { fullName != userInfo?.fullName
+            || email != userInfo?.email
+            || phoneNumber != userInfo?.phoneNumber ? 
             <PrimaryButton
                 text='Cập nhật'
                 style={{
@@ -80,8 +86,16 @@ const UserInfo = () => {
                 }}
                 bgColor={COLOR.blue}
                 center
-                onPress={() => onConfirm()}
-            />
+                onPress={() => navigate('Alert', {
+                    title: 'Bạn muốn cập nhật thông tin?',
+                    onConfirm: () => {onConfirm()}
+                })}
+            /> : null }
+            <ModalInfoSuccess
+                visible={modalSuccess}
+                onRequestClose={() => {
+                    setModalSuccess(!modalSuccess);
+                }} />
         </NormalScreen>
     )
 }
