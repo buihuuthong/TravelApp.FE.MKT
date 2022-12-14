@@ -19,7 +19,7 @@ const TourScreen = ({ route }) => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .get(`http://192.168.1.16:8080/api/tours/${tourId}`, {
+                    .get(`http://192.168.216.52:8080/api/tours/${tourId}`, {
                         headers: {
                             Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
                         },

@@ -25,7 +25,7 @@ const Topic = () => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .get(`http://192.168.1.16:8080/api/tours${topic == null ? '' : `?types=${topic}`}`, {
+                    .get(`http://192.168.216.52:8080/api/tours${topic == null ? '' : `?types=${topic}`}`, {
                         headers: {
                             Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
                         },
@@ -55,7 +55,7 @@ const Topic = () => {
                 style={[styles.topic, globalStyles.shadow, globalStyles.flexRow]}
                 onPress={() => navigate('TourScreen', { tourId: item.id })}
             >
-                <SquareImage uri={`http://192.168.1.16:8080/api/tours/image?id=${item.id}`} style={styles.imgg} />
+                <SquareImage uri={`http://192.168.216.52:8080/api/tours/image?id=${item.id}`} style={styles.imgg} />
                 <View style={styles.text}>
                     <View style={globalStyles.flexRow}>
                         <ImageLocal image={IMAGE.locationBlue} />

@@ -25,7 +25,7 @@ const BookHistoryDetail = ({ route }) => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .get(`http://192.168.1.16:8080/api/bookTour/${bookId}`, {
+                    .get(`http://192.168.216.52:8080/api/bookTour/${bookId}`, {
                         headers: {
                             Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
                         },
@@ -54,7 +54,7 @@ const BookHistoryDetail = ({ route }) => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .post(`http://192.168.1.16:8080/api/bookTour/${bookId}`, {}, {
+                    .post(`http://192.168.216.52:8080/api/bookTour/${bookId}`, {}, {
                         headers: {
                             Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
                         },

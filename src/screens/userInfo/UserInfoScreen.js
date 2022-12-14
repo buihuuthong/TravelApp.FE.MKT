@@ -28,7 +28,7 @@ const UserInfo = () => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .put(`http://192.168.1.16:8080/api/user/my`, {
+                    .put(`http://192.168.216.52:8080/api/user/my`, {
                         "email": email,
                         "fullName": fullName,
                         "phoneNumber": phoneNumber,

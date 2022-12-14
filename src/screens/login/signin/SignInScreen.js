@@ -30,6 +30,7 @@ const SignInScreen = () => {
         try {
             navigate('Loading')
             const user = await login.signin(password, username);
+            console.log(user);
             dispatch(setUserInfo(user))
             auth()
                 .signInWithEmailAndPassword(username + '@gmail.com', password)

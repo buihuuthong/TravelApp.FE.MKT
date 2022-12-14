@@ -27,7 +27,7 @@ const BookmarkScreen = () => {
       .doc(auth()?.currentUser?.uid)
       .onSnapshot(documentSnapshot => {
         axios
-          .get(`http://192.168.1.16:8080/api/saveTour/my`, {
+          .get(`http://192.168.216.52:8080/api/saveTour/my`, {
             headers: {
               Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
             },
@@ -54,7 +54,7 @@ const BookmarkScreen = () => {
         .doc(auth()?.currentUser?.uid)
         .onSnapshot(documentSnapshot => {
             axios
-                .delete(`http://192.168.1.16:8080/api/saveTour/${item}`, {
+                .delete(`http://192.168.216.52:8080/api/saveTour/${item}`, {
                     headers: {
                         Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
                     },
@@ -73,7 +73,7 @@ const BookmarkScreen = () => {
     return (
       <View style={[styles.item, globalStyles.shadow, globalStyles.sbFlexRow]}>
         <View style={globalStyles.sbFlexRow}>
-          <SquareImage uri={`http://192.168.1.16:8080/api/tours/image?id=${item?.tour?.id}`} style={styles.img} />
+          <SquareImage uri={`http://192.168.216.52:8080/api/tours/image?id=${item?.tour?.id}`} style={styles.img} />
           <View style={styles.text}>
             <View style={globalStyles.flexRow}>
               <ImageLocal image={IMAGE.locationBlue} />

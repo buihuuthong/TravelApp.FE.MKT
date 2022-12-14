@@ -24,7 +24,7 @@ const ImageTour = () => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .post(`http://192.168.1.16:8080/api/saveTour`, {}, {
+                    .post(`http://192.168.216.52:8080/api/saveTour`, {}, {
                         headers: {
                             Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
                         },
@@ -50,7 +50,7 @@ const ImageTour = () => {
     }
 
     return (
-        <ImageBackground source={{ uri: `http://192.168.1.16:8080/api/tours/image?id=${tour.id}`}}>
+        <ImageBackground source={{ uri: `http://192.168.216.52:8080/api/tours/image?id=${tour.id}`}}>
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => goBack()}>
                     <ImageLocal image={IMAGE.goback} />

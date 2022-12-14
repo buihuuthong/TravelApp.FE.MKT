@@ -22,7 +22,7 @@ const Recommend = () => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .get(`http://192.168.1.16:8080/api/tours?types=RECOMMEND`, {
+                    .get(`http://192.168.216.52:8080/api/tours?types=RECOMMEND`, {
                         headers: {
                             Authorization: `Bearer ${documentSnapshot?.data()?.token}`,
                         },
@@ -42,7 +42,7 @@ const Recommend = () => {
                 style={[styles.suggestions, globalStyles.shadow]}
                 onPress={() => navigate('TourScreen', { tourId: item.id })}
             >
-                <SquareImage uri={`http://192.168.1.16:8080/api/tours/image?id=${item.id}`} style={styles.img} />
+                <SquareImage uri={`http://192.168.216.52:8080/api/tours/image?id=${item.id}`} style={styles.img} />
                 <View style={[styles.textContainer, globalStyles.sbFlexRow]}>
                     <View>
                         <Text fontSize={FONT_SIZE.default} semibold >{item.tourName}</Text>

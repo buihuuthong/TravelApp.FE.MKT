@@ -68,7 +68,7 @@ const BookTourScreen = ({ route }) => {
             .doc(auth()?.currentUser?.uid)
             .onSnapshot(documentSnapshot => {
                 axios
-                    .post(`http://192.168.1.16:8080/api/bookTour`, {
+                    .post(`http://192.168.216.52:8080/api/bookTour`, {
                         "adult": adults,
                         "child": child,
                         "note": note,
